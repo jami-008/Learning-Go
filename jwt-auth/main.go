@@ -9,16 +9,16 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 )
 
-// JWT secret key
+
 var jwtSecret = []byte("my-super-secret-key")
 
-// Login request structure
+
 type LoginRequest struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
 }
 
-// JWT Claims
+
 type Claims struct {
 	UserID   int    `json:"user_id"`
 	Username string `json:"username"`
@@ -27,16 +27,15 @@ type Claims struct {
 	jwt.RegisteredClaims
 }
 
-// LoginHandler handles POST /login
 func LoginHandler(w http.ResponseWriter, r *http.Request) {
 
-	// Only POST request allowed
+
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
 
-	// Receive JSON body
+
 	var login LoginRequest
 
 	err := json.NewDecoder(r.Body).Decode(&login)
@@ -46,13 +45,13 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Normally these will come from database
+
 	if login.Username != "jami" || login.Password != "123456" {
 		http.Error(w, "Invalid username or password", http.StatusUnauthorized)
 		return
 	}
 
-	// Create JWT claims
+
 	claims := Claims{
 		UserID:   1,
 		Username: login.Username,
@@ -66,13 +65,13 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		},
 	}
 
-	// Create JWT token
+
 	token := jwt.NewWithClaims(
 		jwt.SigningMethodHS256,
 		claims,
 	)
 
-	// Sign token using secret key
+
 	signedToken, err := token.SignedString(jwtSecret)
 
 	if err != nil {
@@ -80,7 +79,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Send response
+
 	response := map[string]interface{}{
 		"message": "Login successful",
 		"token":   signedToken,

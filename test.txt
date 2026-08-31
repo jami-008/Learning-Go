@@ -1,0 +1,833 @@
+// ============================================================================
+// 1. HEALTH CHECK
+// URL: http://localhost:8080/api/v1/health
+// ============================================================================
+//
+// package main
+//
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"net/http"
+// )
+//
+// func healthHandler(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+//
+// 	w.WriteHeader(http.StatusOK)
+//
+// 	json.NewEncoder(w).Encode(map[string]interface{}{
+// 		"status":     "okay",
+// 		"StatusCode": 200,
+// 	})
+// }
+//
+// func main() {
+// 	http.HandleFunc("/api/v1/health", healthHandler)
+//
+// 	fmt.Println("Server running on port 8080...")
+//
+// 	http.ListenAndServe(":8080", nil)
+// }
+
+
+// ============================================================================
+// 2. STATUS CHECK
+// URL: http://localhost:8080/api/v1/status
+// ============================================================================
+//
+// package main
+//
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"net/http"
+// )
+//
+// func statusHandler(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+//
+// 	w.WriteHeader(http.StatusOK)
+//
+// 	json.NewEncoder(w).Encode(map[string]interface{}{
+// 		"status":     "running",
+// 		"StatusCode": 200,
+// 	})
+// }
+//
+// func main() {
+// 	http.HandleFunc("/api/v1/status", statusHandler)
+//
+// 	fmt.Println("Server running on port 8080...")
+//
+// 	http.ListenAndServe(":8080", nil)
+// }
+
+
+// ============================================================================
+// 3. VERSION CHECK
+// URL: http://localhost:8080/api/v1/version
+// ============================================================================
+//
+// package main
+//
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"net/http"
+// )
+//
+// func versionHandler(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+//
+// 	w.WriteHeader(http.StatusOK)
+//
+// 	json.NewEncoder(w).Encode(map[string]interface{}{
+// 		"version":    "1.0.0",
+// 		"StatusCode": 200,
+// 	})
+// }
+//
+// func main() {
+// 	http.HandleFunc("/api/v1/version", versionHandler)
+//
+// 	fmt.Println("Server running on port 8080...")
+//
+// 	http.ListenAndServe(":8080", nil)
+// }
+
+
+// ============================================================================
+// 4. INFO
+// URL: http://localhost:8080/api/v1/info
+// ============================================================================
+//
+// package main
+//
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"net/http"
+// )
+//
+// func infoHandler(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+//
+// 	w.WriteHeader(http.StatusOK)
+//
+// 	json.NewEncoder(w).Encode(map[string]interface{}{
+// 		"appName":     "My Go Server",
+// 		"language":    "Go",
+// 		"port":        8080,
+// 		"StatusCode":  200,
+// 	})
+// }
+//
+// func main() {
+// 	http.HandleFunc("/api/v1/info", infoHandler)
+//
+// 	fmt.Println("Server running on port 8080...")
+//
+// 	http.ListenAndServe(":8080", nil)
+// }
+
+
+// ============================================================================
+// 5. READY CHECK
+// URL: http://localhost:8080/api/v1/ready
+// ============================================================================
+//
+// package main
+//
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"net/http"
+// )
+//
+// func readyHandler(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+//
+// 	w.WriteHeader(http.StatusOK)
+//
+// 	json.NewEncoder(w).Encode(map[string]interface{}{
+// 		"ready":      true,
+// 		"status":     "ready",
+// 		"StatusCode": 200,
+// 	})
+// }
+//
+// func main() {
+// 	http.HandleFunc("/api/v1/ready", readyHandler)
+//
+// 	fmt.Println("Server running on port 8080...")
+//
+// 	http.ListenAndServe(":8080", nil)
+// }
+
+
+// ============================================================================
+// 6. PING
+// URL: http://localhost:8080/api/v1/ping
+// ============================================================================
+//
+// package main
+//
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"net/http"
+// )
+//
+// func pingHandler(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+//
+// 	w.WriteHeader(http.StatusOK)
+//
+// 	json.NewEncoder(w).Encode(map[string]interface{}{
+// 		"message":    "pong",
+// 		"StatusCode": 200,
+// 	})
+// }
+//
+// func main() {
+// 	http.HandleFunc("/api/v1/ping", pingHandler)
+//
+// 	fmt.Println("Server running on port 8080...")
+//
+// 	http.ListenAndServe(":8080", nil)
+// }
+
+
+// ============================================================================
+// 7. METRICS
+// URL: http://localhost:8080/api/v1/metrics
+// ============================================================================
+//
+// package main
+//
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"net/http"
+// 	"runtime"
+// )
+//
+// func metricsHandler(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+//
+// 	w.WriteHeader(http.StatusOK)
+//
+// 	json.NewEncoder(w).Encode(map[string]interface{}{
+// 		"cpuCount":   runtime.NumCPU(),
+// 		"goroutines": runtime.NumGoroutine(),
+// 		"StatusCode": 200,
+// 	})
+// }
+//
+// func main() {
+// 	http.HandleFunc("/api/v1/metrics", metricsHandler)
+//
+// 	fmt.Println("Server running on port 8080...")
+//
+// 	http.ListenAndServe(":8080", nil)
+// }
+
+
+// ============================================================================
+// 8. UPTIME
+// URL: http://localhost:8080/api/v1/uptime
+// ============================================================================
+//
+// package main
+//
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"net/http"
+// 	"time"
+// )
+//
+// var startTime = time.Now()
+//
+// func uptimeHandler(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+//
+// 	w.WriteHeader(http.StatusOK)
+//
+// 	json.NewEncoder(w).Encode(map[string]interface{}{
+// 		"uptime":     time.Since(startTime).String(),
+// 		"StatusCode": 200,
+// 	})
+// }
+//
+// func main() {
+// 	http.HandleFunc("/api/v1/uptime", uptimeHandler)
+//
+// 	fmt.Println("Server running on port 8080...")
+//
+// 	http.ListenAndServe(":8080", nil)
+// }
+
+
+// ============================================================================
+// 9. CONFIG
+// URL: http://localhost:8080/api/v1/config
+// ============================================================================
+//
+// package main
+//
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"net/http"
+// )
+//
+// func configHandler(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+//
+// 	w.WriteHeader(http.StatusOK)
+//
+// 	json.NewEncoder(w).Encode(map[string]interface{}{
+// 		"port":       8080,
+// 		"apiVersion": "v1",
+// 		"format":     "JSON",
+// 		"StatusCode": 200,
+// 	})
+// }
+//
+// func main() {
+// 	http.HandleFunc("/api/v1/config", configHandler)
+//
+// 	fmt.Println("Server running on port 8080...")
+//
+// 	http.ListenAndServe(":8080", nil)
+// }
+
+
+// ============================================================================
+// 10. DEPENDENCIES
+// URL: http://localhost:8080/api/v1/dependencies
+// ============================================================================
+//
+// package main
+//
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"net/http"
+// )
+//
+// func dependenciesHandler(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+//
+// 	w.WriteHeader(http.StatusOK)
+//
+// 	json.NewEncoder(w).Encode(map[string]interface{}{
+// 		"database":    "connected",
+// 		"cache":       "connected",
+// 		"externalAPI": "connected",
+// 		"StatusCode":  200,
+// 	})
+// }
+//
+// func main() {
+// 	http.HandleFunc("/api/v1/dependencies", dependenciesHandler)
+//
+// 	fmt.Println("Server running on port 8080...")
+//
+// 	http.ListenAndServe(":8080", nil)
+// }
+
+
+// ============================================================================
+// 11. DATABASE HEALTH
+// URL: http://localhost:8080/api/v1/db-health
+// ============================================================================
+//
+// package main
+//
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"net/http"
+// )
+//
+// func dbHealthHandler(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+//
+// 	w.WriteHeader(http.StatusOK)
+//
+// 	json.NewEncoder(w).Encode(map[string]interface{}{
+// 		"database":   "healthy",
+// 		"connected":  true,
+// 		"StatusCode": 200,
+// 	})
+// }
+//
+// func main() {
+// 	http.HandleFunc("/api/v1/db-health", dbHealthHandler)
+//
+// 	fmt.Println("Server running on port 8080...")
+//
+// 	http.ListenAndServe(":8080", nil)
+// }
+
+
+// ============================================================================
+// 12. CACHE HEALTH
+// URL: http://localhost:8080/api/v1/cache-health
+// ============================================================================
+//
+// package main
+//
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"net/http"
+// )
+//
+// func cacheHealthHandler(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+//
+// 	w.WriteHeader(http.StatusOK)
+//
+// 	json.NewEncoder(w).Encode(map[string]interface{}{
+// 		"cache":      "healthy",
+// 		"connected":  true,
+// 		"StatusCode": 200,
+// 	})
+// }
+//
+// func main() {
+// 	http.HandleFunc("/api/v1/cache-health", cacheHealthHandler)
+//
+// 	fmt.Println("Server running on port 8080...")
+//
+// 	http.ListenAndServe(":8080", nil)
+// }
+
+
+// ============================================================================
+// 13. SERVICES
+// URL: http://localhost:8080/api/v1/services
+// ============================================================================
+//
+// package main
+//
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"net/http"
+// )
+//
+// func servicesHandler(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+//
+// 	w.WriteHeader(http.StatusOK)
+//
+// 	json.NewEncoder(w).Encode(map[string]interface{}{
+// 		"services": []string{
+// 			"Database",
+// 			"Cache",
+// 			"External API",
+// 		},
+// 		"StatusCode": 200,
+// 	})
+// }
+//
+// func main() {
+// 	http.HandleFunc("/api/v1/services", servicesHandler)
+//
+// 	fmt.Println("Server running on port 8080...")
+//
+// 	http.ListenAndServe(":8080", nil)
+// }
+
+
+// ============================================================================
+// 14. SERVER TIME
+// URL: http://localhost:8080/api/v1/time
+// ============================================================================
+//
+// package main
+//
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"net/http"
+// 	"time"
+// )
+//
+// func timeHandler(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+//
+// 	w.WriteHeader(http.StatusOK)
+//
+// 	json.NewEncoder(w).Encode(map[string]interface{}{
+// 		"serverTime": time.Now(),
+// 		"StatusCode": 200,
+// 	})
+// }
+//
+// func main() {
+// 	http.HandleFunc("/api/v1/time", timeHandler)
+//
+// 	fmt.Println("Server running on port 8080...")
+//
+// 	http.ListenAndServe(":8080", nil)
+// }
+
+
+// ============================================================================
+// 15. ENVIRONMENT
+// URL: http://localhost:8080/api/v1/environment
+// ============================================================================
+//
+// package main
+//
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"net/http"
+// )
+//
+// func environmentHandler(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+//
+// 	w.WriteHeader(http.StatusOK)
+//
+// 	json.NewEncoder(w).Encode(map[string]interface{}{
+// 		"environment": "development",
+// 		"StatusCode":  200,
+// 	})
+// }
+//
+// func main() {
+// 	http.HandleFunc("/api/v1/environment", environmentHandler)
+//
+// 	fmt.Println("Server running on port 8080...")
+//
+// 	http.ListenAndServe(":8080", nil)
+// }
+
+
+// ============================================================================
+// 16. BUILD INFO
+// URL: http://localhost:8080/api/v1/build
+// ============================================================================
+//
+// package main
+//
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"net/http"
+// )
+//
+// func buildHandler(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+//
+// 	w.WriteHeader(http.StatusOK)
+//
+// 	json.NewEncoder(w).Encode(map[string]interface{}{
+// 		"buildNumber": "1001",
+// 		"version":     "1.0.0",
+// 		"StatusCode":  200,
+// 	})
+// }
+//
+// func main() {
+// 	http.HandleFunc("/api/v1/build", buildHandler)
+//
+// 	fmt.Println("Server running on port 8080...")
+//
+// 	http.ListenAndServe(":8080", nil)
+// }
+
+
+// ============================================================================
+// 17. LOGS
+// URL: http://localhost:8080/api/v1/logs
+// ============================================================================
+//
+// package main
+//
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"net/http"
+// )
+//
+// func logsHandler(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+//
+// 	w.WriteHeader(http.StatusOK)
+//
+// 	json.NewEncoder(w).Encode(map[string]interface{}{
+// 		"logs": []string{
+// 			"Server started",
+// 			"Server is running",
+// 			"No error found",
+// 		},
+// 		"StatusCode": 200,
+// 	})
+// }
+//
+// func main() {
+// 	http.HandleFunc("/api/v1/logs", logsHandler)
+//
+// 	fmt.Println("Server running on port 8080...")
+//
+// 	http.ListenAndServe(":8080", nil)
+// }
+
+
+// ============================================================================
+// 18. DEBUG
+// URL: http://localhost:8080/api/v1/debug
+// ============================================================================
+//
+// package main
+//
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"net/http"
+// 	"runtime"
+// )
+//
+// func debugHandler(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+//
+// 	w.WriteHeader(http.StatusOK)
+//
+// 	json.NewEncoder(w).Encode(map[string]interface{}{
+// 		"goVersion":    runtime.Version(),
+// 		"operatingSys": runtime.GOOS,
+// 		"architecture": runtime.GOARCH,
+// 		"StatusCode":   200,
+// 	})
+// }
+//
+// func main() {
+// 	http.HandleFunc("/api/v1/debug", debugHandler)
+//
+// 	fmt.Println("Server running on port 8080...")
+//
+// 	http.ListenAndServe(":8080", nil)
+// }
+
+
+// ============================================================================
+// 19. SHUTDOWN
+// URL: http://localhost:8080/api/v1/shutdown
+// Demo version: server সত্যি shutdown করবে না
+// ============================================================================
+//
+// package main
+//
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"net/http"
+// )
+//
+// func shutdownHandler(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+//
+// 	w.WriteHeader(http.StatusForbidden)
+//
+// 	json.NewEncoder(w).Encode(map[string]interface{}{
+// 		"message":    "Shutdown is disabled",
+// 		"StatusCode": 403,
+// 	})
+// }
+//
+// func main() {
+// 	http.HandleFunc("/api/v1/shutdown", shutdownHandler)
+//
+// 	fmt.Println("Server running on port 8080...")
+//
+// 	http.ListenAndServe(":8080", nil)
+// }
+
+
+// ============================================================================
+// 20. RESTART
+// URL: http://localhost:8080/api/v1/restart
+// Demo version: server সত্যি restart করবে না
+// ============================================================================
+//
+// package main
+//
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"net/http"
+// )
+//
+// func restartHandler(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+//
+// 	w.WriteHeader(http.StatusForbidden)
+//
+// 	json.NewEncoder(w).Encode(map[string]interface{}{
+// 		"message":    "Restart is disabled",
+// 		"StatusCode": 403,
+// 	})
+// }
+//
+// func main() {
+// 	http.HandleFunc("/api/v1/restart", restartHandler)
+//
+// 	fmt.Println("Server running on port 8080...")
+//
+// 	http.ListenAndServe(":8080", nil)
+// }
+
+//============================================
+//RegisteredClaim
+//============================================
+package main
+
+import (
+	"fmt"
+	"time"
+
+	"github.com/golang-jwt/jwt/v5"
+)
+
+func main() {
+
+	secretKey := "my-secret-key"
+
+	claims := jwt.RegisteredClaims{
+		Subject:   "123",
+		ExpiresAt: jwt.NewNumericDate(time.Now().Add(24 * time.Hour)),
+		IssuedAt:  jwt.NewNumericDate(time.Now()),
+		Issuer:    "my-auth-server",
+	}
+
+	token := jwt.NewWithClaims(
+		jwt.SigningMethodHS256,
+		claims,
+	)
+
+	signedToken, err := token.SignedString([]byte(secretKey))
+
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	fmt.Println(signedToken)
+}
+
+================================================================
+
+================================================================
+Token Generation With Login 
+================================================================
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"net/http"
+	"time"
+
+	"github.com/golang-jwt/jwt/v5"
+)
+
+// JWT secret key
+var jwtSecret = []byte("my-super-secret-key")
+
+// Login request structure
+type LoginRequest struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+// JWT Claims
+type Claims struct {
+	UserID   int    `json:"user_id"`
+	Username string `json:"username"`
+	Role     string `json:"role"`
+
+	jwt.RegisteredClaims
+}
+
+// LoginHandler handles POST /login
+func LoginHandler(w http.ResponseWriter, r *http.Request) {
+
+	// Only POST request allowed
+	if r.Method != http.MethodPost {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	// Receive JSON body
+	var login LoginRequest
+
+	err := json.NewDecoder(r.Body).Decode(&login)
+
+	if err != nil {
+		http.Error(w, "Invalid JSON", http.StatusBadRequest)
+		return
+	}
+
+	// Normally these will come from database
+	if login.Username != "jami" || login.Password != "123456" {
+		http.Error(w, "Invalid username or password", http.StatusUnauthorized)
+		return
+	}
+
+	// Create JWT claims
+	claims := Claims{
+		UserID:   1,
+		Username: login.Username,
+		Role:     "user",
+
+		RegisteredClaims: jwt.RegisteredClaims{
+			Subject:   "1",
+			Issuer:    "my-auth-server",
+			ExpiresAt: jwt.NewNumericDate(time.Now().Add(24 * time.Hour)),
+			IssuedAt:  jwt.NewNumericDate(time.Now()),
+		},
+	}
+
+	// Create JWT token
+	token := jwt.NewWithClaims(
+		jwt.SigningMethodHS256,
+		claims,
+	)
+
+	// Sign token using secret key
+	signedToken, err := token.SignedString(jwtSecret)
+
+	if err != nil {
+		http.Error(w, "Could not create token", http.StatusInternalServerError)
+		return
+	}
+
+	// Send response
+	response := map[string]interface{}{
+		"message": "Login successful",
+		"token":   signedToken,
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+
+	json.NewEncoder(w).Encode(response)
+}
+
+func main() {
+
+	http.HandleFunc("/login", LoginHandler)
+
+	fmt.Println("Server running on http://localhost:8080")
+
+	http.ListenAndServe(":8080", nil)
+}
+========================================================================================================
